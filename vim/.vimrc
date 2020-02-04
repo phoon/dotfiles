@@ -1,5 +1,7 @@
 " ~/.vimrc
 
+syntax on               " 启用语法高亮
+
 set ttyfast
 set t_Co=256            " 启用256色
 " set termguicolors
@@ -30,8 +32,6 @@ set nobackup
 set noswapfile
 set nowritebackup
 
-let g:onedark_termcolors=256
-
 " vim-plug插件
 call plug#begin('~/.vim/plugged')
 	Plug 'joshdick/onedark.vim'
@@ -45,8 +45,8 @@ call plug#begin('~/.vim/plugged')
 	Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'} " 代码补全
 call plug#end()
 
-syntax on           " 启用语法高亮
 colorscheme onedark " 配色方案
+let g:onedark_termcolors=256
 
 " Lightline
 set laststatus=2
@@ -55,8 +55,12 @@ let g:lightline = {
 	\ }
 
 " vim-go 配置
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
+let g:go_gopls_enabled=0
+let g:go_template_use_pkg=1
+let g:go_rename_command='gopls'
+let g:fmt_fail_silently=1
+let g:def_mapping_enabled=0
+let g:go_info_mode = 'gopls'
 let g:go_fmt_command = "goimports"
 let g:go_auto_type_info = 1
 let g:go_highlight_function_calls = 1
