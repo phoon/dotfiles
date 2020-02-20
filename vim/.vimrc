@@ -11,11 +11,11 @@ set mouse=a             " 启用鼠标支持
 
 " 缩进
 set expandtab
-set tabstop=4			" TAB空格数
-set shiftwidth=4		" 缩进宽度
-set softtabstop=4		" TAB转为多少个空格
-set autoindent			" 自动缩进
-set smartindent			" 智能缩进
+set tabstop=4           " TAB空格数
+set shiftwidth=4        " 缩进宽度
+set softtabstop=4       " TAB转为多少个空格
+set autoindent          " 自动缩进
+set smartindent         " 智能缩进
 
 " 外观
 set number              " 启用行号
@@ -34,33 +34,33 @@ set nowritebackup
 
 " vim-plug插件
 call plug#begin('~/.vim/plugged')
-	Plug 'joshdick/onedark.vim'
-	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }          " go工具
-	Plug 'tpope/vim-fugitive'                                   " git工具
-	Plug 'tpope/vim-commentary'                                 " 注释工具
-	Plug 'itchyny/lightline.vim'                                " 状态栏工具
-	Plug 'majutsushi/tagbar'                                    " 代码导航
-	Plug 'scrooloose/nerdtree'                                  " 文件管理
-	Plug 'Xuyuanp/nerdtree-git-plugin'                          " 文件git状态
-	Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'} " 代码补全
+    Plug 'joshdick/onedark.vim'
+    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }          " go工具
+    Plug 'tpope/vim-fugitive'                                   " git工具
+    Plug 'tpope/vim-commentary'                                 " 注释工具
+    Plug 'honza/vim-snippets'                                   " 代码片段
+    Plug 'vim-airline/vim-airline'                              " 状态栏工具
+    Plug 'vim-airline/vim-airline-themes'                       " 状态栏主题
+    Plug 'majutsushi/tagbar'                                    " 代码导航
+    Plug 'scrooloose/nerdtree'                                  " 文件管理
+    Plug 'Xuyuanp/nerdtree-git-plugin'                          " 文件git状态
+    Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'} " 代码补全
 call plug#end()
 
 colorscheme onedark " 配色方案
-let g:onedark_termcolors=256
+let g:onedark_termcolors = 256
 
-" Lightline
-set laststatus=2
-let g:lightline = {
-	\ 'colorscheme': 'one',
-	\ }
+" airline 配置
+let g:airline_theme = 'tomorrow'
+let g:airline#extensions#tabline#enabled = 1
 
 " vim-go 配置
-let g:go_gopls_enabled=0
-let g:go_template_use_pkg=1
-let g:go_rename_command='gopls'
-let g:fmt_fail_silently=1
-let g:def_mapping_enabled=0
-let g:go_info_mode = 'gopls'
+let g:go_gopls_enabled = 0
+let g:go_template_use_pkg = 1
+" let g:go_rename_command='gopls'
+let g:fmt_fail_silently = 1
+let g:def_mapping_enabled = 0
+" let g:go_info_mode = 'gopls'
 let g:go_fmt_command = "goimports"
 let g:go_auto_type_info = 1
 let g:go_highlight_function_calls = 1
@@ -92,3 +92,16 @@ inoremap ] ]<Esc>i
 
 nnoremap <Leader>b :bp<CR>
 nnoremap <Leader>f :bn<CR>
+
+" coc-snippets
+" using <Tab> to trigger completion
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
