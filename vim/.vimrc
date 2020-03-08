@@ -21,6 +21,7 @@ set smartindent         " 智能缩进
 set number              " 启用行号
 set relativenumber      " 启用相对位置行号显示
 set cursorline          " 启用当前行高亮
+set cursorcolumn        " 启用当前列高亮
 set wrap                " 启用自动折行
 set background=dark     " 设置背景颜色
 set wildmenu            " 增强vim命令补全
@@ -57,10 +58,11 @@ let g:airline#extensions#tabline#enabled = 1
 " vim-go 配置
 let g:go_gopls_enabled = 0
 let g:go_template_use_pkg = 1
-" let g:go_rename_command='gopls'
+let g:go_rename_command='gorename'
 let g:fmt_fail_silently = 1
 let g:def_mapping_enabled = 0
-" let g:go_info_mode = 'gopls'
+let g:go_def_mode = 'godef'
+let g:go_info_mode = 'guru'
 let g:go_fmt_command = "goimports"
 let g:go_auto_type_info = 1
 let g:go_highlight_function_calls = 1
