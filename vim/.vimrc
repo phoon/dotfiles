@@ -71,7 +71,7 @@ let g:go_highlight_function_calls = 1
 " autocmd vimenter * NERDTree
 
 " NERDTree git plugin 配置
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
     \ "Untracked" : "✭",
@@ -94,6 +94,7 @@ inoremap ] ]<Esc>i
 
 nnoremap <Leader>b :bp<CR>
 nnoremap <Leader>f :bn<CR>
+nnoremap <Leader>e :bdelete<CR>
 
 " coc-snippets
 " using <Tab> to trigger completion
