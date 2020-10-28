@@ -45,7 +45,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'majutsushi/tagbar'                                    " 代码导航
     Plug 'scrooloose/nerdtree'                                  " 文件管理
     Plug 'Xuyuanp/nerdtree-git-plugin'                          " 文件git状态
-    Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'} " 代码补全
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}             " 代码补全
 call plug#end()
 
 colorscheme onedark " 配色方案
