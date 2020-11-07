@@ -56,14 +56,13 @@ let g:airline_theme = 'tomorrow'
 let g:airline#extensions#tabline#enabled = 1
 
 " vim-go 配置
-let g:go_gopls_enabled = 1
-" 预先使用 gopls -listen=unix;/tmp/gopls-daemon-socket 启动一个gopls server
-let g:go_gopls_options = ['-remote=unix;/tmp/gopls-daemon-socket']
+" 修改coc-nvim的TMPDIR实现unix socket共享: .vim/plugged/coc.nvim/autoload/coc/client.vim
+let g:go_gopls_options = ['-remote=auto']
 let g:go_template_use_pkg = 1
 let g:go_rename_command='gorename'
 let g:fmt_fail_silently = 1
 let g:def_mapping_enabled = 0
-let g:go_fmt_command = "goimports"
+let g:go_fmt_command = 'goimports'
 let g:go_auto_type_info = 1
 let g:go_updatetime = 500
 let g:go_highlight_function_calls = 1
