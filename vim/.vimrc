@@ -56,7 +56,6 @@ let g:airline_theme = 'tomorrow'
 let g:airline#extensions#tabline#enabled = 1
 
 " vim-go 配置
-" 修改coc-nvim的TMPDIR实现unix socket共享: .vim/plugged/coc.nvim/autoload/coc/client.vim
 let g:go_gopls_options = ['-remote=auto']
 let g:go_template_use_pkg = 1
 let g:go_rename_command='gorename'
@@ -86,6 +85,12 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 
 " 键位映射
 let mapleader = ','
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 map <C-n> :NERDTreeToggle<CR>
 inoremap ) )<Esc>i
