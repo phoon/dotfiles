@@ -27,6 +27,7 @@ set background=dark     " 设置背景颜色
 set wildmenu            " 增强vim命令补全
 set hlsearch            " 搜索高亮
 set hidden              " 避免必须保存修改才能跳转buffer
+set cc=80
 
 " 备份
 set nobackup
