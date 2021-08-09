@@ -1,0 +1,6 @@
+# fcitx5
+GTK_IM_MODULE	DEFAULT=fcitx
+QT_IM_MODULE	DEFAULT=fcitx
+XMODIFIERS	    DEFAULT=@im=fcitx
+XIM		        DEFAULT=fcitx
+XIM_PROGRAM	    DEFAULT=fcitx
