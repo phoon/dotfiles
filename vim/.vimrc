@@ -57,6 +57,7 @@ let g:airline_theme = 'tomorrow'
 let g:airline#extensions#tabline#enabled = 1
 
 " vim-go 配置
+let g:go_doc_popup_window = 1
 let g:go_gopls_options = ['-remote=auto']
 let g:go_template_use_pkg = 1
 let g:go_rename_command='gorename'
