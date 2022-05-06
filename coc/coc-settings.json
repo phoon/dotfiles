@@ -1,0 +1,21 @@
+{
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "args": ["-remote=auto"],
+      "rootPatterns": ["go.mod"],
+      "disableWorkspaceFolders": true,
+      "filetypes": ["go"]
+    },
+    "ccls": {
+      "command": "ccls",
+      "rootPatterns": [".ccls", "compile_commands.json"],
+      "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
+      "initializationOptions" : {
+        "cache": {
+            "directory": "/tmp/ccls"
+        }
+      }
+    }
+  }
+}

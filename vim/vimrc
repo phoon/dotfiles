@@ -1,4 +1,35 @@
-" ~/.vimrc
+" ${XDG_CONFIG_HOME}/vim/vimrc
+" XDG support
+
+if empty($MYVIMRC) | let $MYVIMRC = expand('<sfile>:p') | endif
+
+" if empty($XDG_CACHE_HOME)  | let $XDG_CACHE_HOME  = $HOME."/.cache"       | endif
+" if empty($XDG_CONFIG_HOME) | let $XDG_CONFIG_HOME = $HOME."/.config"      | endif
+" if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endif
+" if empty($XDG_STATE_HOME)  | let $XDG_STATE_HOME  = $HOME."/.local/state" | endif
+
+set runtimepath^=$XDG_CONFIG_HOME/vim
+set runtimepath+=$XDG_DATA_HOME/vim
+set runtimepath+=$XDG_CONFIG_HOME/vim/after
+
+set packpath^=$XDG_DATA_HOME/vim,$XDG_CONFIG_HOME/vim
+set packpath+=$XDG_CONFIG_HOME/vim/after,$XDG_DATA_HOME/vim/after
+
+let g:netrw_home = $XDG_DATA_HOME."/vim"
+call mkdir($XDG_DATA_HOME."/vim/spell", 'p', 0700)
+
+set backupdir=$XDG_STATE_HOME/vim/backup | call mkdir(&backupdir, 'p', 0700)
+set directory=$XDG_STATE_HOME/vim/swap   | call mkdir(&directory, 'p', 0700)
+set undodir=$XDG_STATE_HOME/vim/undo     | call mkdir(&undodir,   'p', 0700)
+set viewdir=$XDG_STATE_HOME/vim/view     | call mkdir(&viewdir,   'p', 0700)
+
+if !has('nvim') " Neovim has its own special location
+  set viminfofile=$XDG_STATE_HOME/vim/viminfo
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Regular configurations
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 syntax on               " 启用语法高亮
 
@@ -35,7 +66,7 @@ set noswapfile
 set nowritebackup
 
 " vim-plug插件
-call plug#begin('~/.vim/plugged')
+call plug#begin('$XDG_CONFIG_HOME/vim/plugged')
     Plug 'joshdick/onedark.vim'
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }          " go工具
     Plug 'tpope/vim-fugitive'                                   " git工具
@@ -51,6 +82,7 @@ call plug#end()
 
 colorscheme onedark " 配色方案
 let g:onedark_termcolors = 256
+let g:coc_config_home = '~/.config/coc' " coc-settings.json
 
 " airline 配置
 let g:airline_theme = 'tomorrow'
@@ -104,7 +136,9 @@ nnoremap <Leader>f :bn<CR>
 nnoremap <Leader>e :bdelete<CR>
 
 " coc-snippets
+" INSTALL: CocInstall coc-snippets
 " using <Tab> to trigger completion
+
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
